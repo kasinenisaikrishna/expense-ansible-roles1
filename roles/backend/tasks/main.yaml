@@ -35,7 +35,7 @@
   ansible.builtin.command: npm install 
   args:
     chdir: /app 
-- name: copy backend service #copy only works for files without variables
+- name: copy backend service #copy only works for files without variables, Hence we should use .template module instead of .copy module
   ansible.builtin.copy:
     src: backend.service
     dest: /etc/systemd/system/backend.service
