@@ -36,7 +36,7 @@
   args:
     chdir: /app 
 - name: copy backend service #copy only works for files without variables, Hence we should use .template module instead of .copy module
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: backend.service
     dest: /etc/systemd/system/backend.service
 - name: import mysql data
