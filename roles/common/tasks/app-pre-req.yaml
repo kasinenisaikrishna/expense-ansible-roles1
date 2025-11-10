@@ -2,7 +2,7 @@
   ansible.builtin.file:
     path: "{{ app_location }}"
     state:  absent
-  ignore_errors: true 
+  ignore_errors: true #firsttime while running we won't be having /app 
 
 - name: create app directory
   ansible.builtin.file: 
@@ -10,7 +10,7 @@
     state: directory
 
 - name: "download the {{ component }} code"
-  ansible.builtin.unarchive:
+  ansible.builtin.unarchive: #perform 2 tasks downloads and place files in dest location
     src: "https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ component }}-v2.zip"
     dest: "{{ app_location }}"
     remote_src: yes
